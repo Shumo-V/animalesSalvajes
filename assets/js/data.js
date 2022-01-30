@@ -1,5 +1,5 @@
 const animales = (() => {
-  const url = "http://localhost:5500/assets/json/animales.json";
+  const url = "/assets/json/animales.json";
   const getData = async () => {
     try {
       const res = await fetch(url);
