@@ -10,7 +10,6 @@ $("#btnRegistrar").on("click", () => {
   let imgPreview = preview.slice(5, preview.length - 2);
 
   const valorAnimal = especie;
-
   const pruebaAnimal = {
     Leon: new Leon(especie, edad, imgPreview, comentarios),
     Lobo: new Lobo(especie, edad, imgPreview, comentarios),
@@ -75,43 +74,42 @@ const investigation = () => {
   animalTabla.append(var2);
 };
 
-const sonidoAnimal = (e) => {
-  const animal = animales[e];
-  const pruebaNombre = animal.getNombre();
-
-  const sonidos = {
-    Leon: animal.rugir(),
-    Lobo: animal.aullar(),
-    Oso: animal.gruñir(),
-    Serpiente: animal.sisear(),
-    Aguila: animal.chillar(),
-  };
-
-  let sonido = sonidos[pruebaNombre];
-  return sonido;
-};
-
+// Esto no me corre porque no me reconoce el rugir() como función
 // const sonidoAnimal = (e) => {
-//   let sonido = "";
 //   const animal = animales[e];
-//   if (animal.getNombre() == "Leon") {
-//     sonido = animal.rugir();
-//   } else if (animal.getNombre() == "Lobo") {
-//     sonido = animal.aullar();
-//   } else if (animal.getNombre() == "Oso") {
-//     sonido = animal.gruñir();
-//   } else if (animal.getNombre() == "Serpiente") {
-//     sonido = animal.sisear();
-//   } else {
-//     sonido = animal.chillar();
-//   }
+//   const pruebaNombre = animal.getNombre();
+
+//   const sonidos = {
+//     Leon: animal.rugir(),
+//     Lobo: animal.aullar(),
+//     Oso: animal.gruñir(),
+//     Serpiente: animal.sisear(),
+//     Aguila: animal.chillar(),
+//   };
+
+//   let sonido = sonidos[pruebaNombre];
 //   return sonido;
 // };
 
-// Pasar todo esto a una función
+const sonidoAnimal = (e) => {
+  let sonido = "";
+  const animal = animales[e];
+  if (animal.getNombre() == "Leon") {
+    sonido = animal.rugir();
+  } else if (animal.getNombre() == "Lobo") {
+    sonido = animal.aullar();
+  } else if (animal.getNombre() == "Oso") {
+    sonido = animal.gruñir();
+  } else if (animal.getNombre() == "Serpiente") {
+    sonido = animal.sisear();
+  } else {
+    sonido = animal.chillar();
+  }
+  return sonido;
+};
+
 window.activarSonido = (i) => {
   const soundAnimal = sonidoAnimal(i);
-  let player = document.getElementById("player");
-  player.src = soundAnimal;
-  player.play();
+  let player = $("#player").attr("src", soundAnimal);
+  player.trigger("play");
 };
