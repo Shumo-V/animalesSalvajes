@@ -74,38 +74,17 @@ const investigation = () => {
   animalTabla.append(var2);
 };
 
-// Esto no me corre porque no me reconoce el rugir() como función
-// const sonidoAnimal = (e) => {
-//   const animal = animales[e];
-//   const pruebaNombre = animal.getNombre();
-
-//   const sonidos = {
-//     Leon: animal.rugir(),
-//     Lobo: animal.aullar(),
-//     Oso: animal.gruñir(),
-//     Serpiente: animal.sisear(),
-//     Aguila: animal.chillar(),
-//   };
-
-//   let sonido = sonidos[pruebaNombre];
-//   return sonido;
-// };
-
 const sonidoAnimal = (e) => {
-  let sonido = "";
   const animal = animales[e];
-  if (animal.getNombre() == "Leon") {
-    sonido = animal.rugir();
-  } else if (animal.getNombre() == "Lobo") {
-    sonido = animal.aullar();
-  } else if (animal.getNombre() == "Oso") {
-    sonido = animal.gruñir();
-  } else if (animal.getNombre() == "Serpiente") {
-    sonido = animal.sisear();
-  } else {
-    sonido = animal.chillar();
-  }
-  return sonido;
+  let animalSound = "";
+
+  ["rugir", "aullar", "grunir", "sisear", "chillar"].forEach((ruido) => {
+    if (ruido in animal) {
+      animalSound = ruido;
+    }
+  });
+
+  return animal[animalSound]();
 };
 
 window.activarSonido = (i) => {

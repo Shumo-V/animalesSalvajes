@@ -25,7 +25,7 @@ class Oso extends Animal {
     super(nombre, edad, img, comentarios, sonido);
   }
 
-  gruñir() {
+  grunir() {
     return `assets/sounds/Gruñido.mp3`;
   }
 }
