@@ -76,15 +76,18 @@ const investigation = () => {
 
 const sonidoAnimal = (e) => {
   const animal = animales[e];
-  let animalSound = "";
+  let nombreAnimal = animal.getNombre();
 
-  ["rugir", "aullar", "grunir", "sisear", "chillar"].forEach((ruido) => {
-    if (ruido in animal) {
-      animalSound = ruido;
-    }
-  });
+  const pruebaAnimal = {
+    Leon: "rugir",
+    Lobo: "aullar",
+    Oso: "grunir",
+    Serpiente: "sisear",
+    Aguila: "chillar",
+  };
 
-  return animal[animalSound]();
+  let sonido = animal[pruebaAnimal[nombreAnimal]]();
+  return sonido;
 };
 
 window.activarSonido = (i) => {
