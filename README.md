@@ -1,4 +1,4 @@
-Prueba para finalizar modulo de Programación avanzada en JavaScript, donde se evalua:
+# Cierre Modulo 3 "Programación avanzada en JavaScript".
 
 ● Crear clases con herencias.
 
